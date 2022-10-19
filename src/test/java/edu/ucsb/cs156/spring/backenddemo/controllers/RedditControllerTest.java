@@ -28,9 +28,10 @@ import java.util.Map;
 
 import org.springframework.http.HttpHeaders;
 
+
 @WebMvcTest(value = RedditController.class)
 public class RedditControllerTest {
-    private ObjectMapper mapper = new ObjectMapper();
+
     @Autowired
     private MockMvc mockMvc;
     @MockBean
