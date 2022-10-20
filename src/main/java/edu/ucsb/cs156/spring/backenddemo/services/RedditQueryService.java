@@ -2,7 +2,9 @@ package edu.ucsb.cs156.spring.backenddemo.services;
 
 import java.util.List;
 import java.util.Map;
+import java.io.StringReader;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.client.RestTemplate;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,8 @@ import org.springframework.web.client.HttpClientErrorException;
 @Slf4j
 @Service
 public class RedditQueryService {
+
+    private ObjectMapper mapper = new ObjectMapper();
 
     private final RestTemplate restTemplate;
 
