@@ -21,13 +21,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 
-@WebMvcTest(value = LocationController.class) // from springboot: allows us to test controller w/o setting up entire web app
+@WebMvcTest(value = LocationController.class)
 public class LocationControllerTests {
   private ObjectMapper mapper = new ObjectMapper();
   @Autowired
   private MockMvc mockMvc;
 
-  @MockBean // bean = java object with param-less constructor & getter/setter for all priv vars
+  @MockBean
   LocationQueryService mockLocationQueryService;
 
 
