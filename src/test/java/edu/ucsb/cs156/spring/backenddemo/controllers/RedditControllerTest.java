@@ -1,6 +1,5 @@
 package edu.ucsb.cs156.spring.backenddemo.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,22 +10,14 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import edu.ucsb.cs156.spring.backenddemo.services.RedditQueryService;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
+
 import static org.mockito.ArgumentMatchers.eq;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.times;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.http.HttpHeaders;
 
 
 @WebMvcTest(value = RedditController.class)
@@ -40,7 +31,7 @@ public class RedditControllerTest {
     @Test
     public void test_getSubredditInfo() throws Exception {
         String fakeJsonResult="{ \"fake\" : \"result\" }";
-        String subreddit = "cscareerquestions";
+        String subreddit = "UCSantaBarbara";
         when(mockRedditQueryService.getJSON(eq(subreddit))).thenReturn(fakeJsonResult);
 
         String url = String.format("/api/reddit/get?subreddit=%s", subreddit);
