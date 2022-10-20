@@ -11,14 +11,15 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import edu.ucsb.cs156.spring.backenddemo.services.LocationQueryService;
 
-
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-
 
 
 @WebMvcTest(value = LocationController.class)
@@ -26,19 +27,18 @@ public class LocationControllerTests {
   private ObjectMapper mapper = new ObjectMapper();
   @Autowired
   private MockMvc mockMvc;
-
   @MockBean
   LocationQueryService mockLocationQueryService;
 
 
   @Test
-  public void test_getLocations() throws Exception {
+  public void test_getLocationCodes() throws Exception {
   
     String fakeJsonResult="{ \"fake\" : \"result\" }";
-    String location = "Goleta";
-    when(mockLocationQueryService.getJSON(eq(location))).thenReturn(fakeJsonResult);
+    String Location = "UCSB";
+    when(mockLocationQueryService.getJSON(eq(Location))).thenReturn(fakeJsonResult);
 
-    String url = String.format("/api/location/get?location=%s",location);
+    String url = String.format("/api/locations/get?location=%s", Location);
 
     MvcResult response = mockMvc
         .perform( get(url).contentType("application/json"))
