@@ -16,7 +16,7 @@ Lab instructions: <https://ucsb-cs156.github.io/f22/lab/team01/>
 
 Repo: https://github.com/ucsb-cs156-f22/team01-f22-6pm-3
 
-On Heroku: https://cs156-f22-6pm-3-team01.herokuapp.com
+On Heroku:  https://f22-6pm-3-team01.herokuapp.com/
 
 ## About this repo
 
