@@ -2,7 +2,6 @@ package edu.ucsb.cs156.spring.backenddemo.services;
 
 import java.util.List;
 import java.util.Map;
-import java.io.StringReader;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.client.RestTemplate;
@@ -22,8 +21,6 @@ import org.springframework.web.client.HttpClientErrorException;
 @Service
 public class RedditQueryService {
 
-    private ObjectMapper mapper = new ObjectMapper();
-
     private final RestTemplate restTemplate;
 
     public RedditQueryService(RestTemplateBuilder restTemplateBuilder) {
@@ -41,9 +38,8 @@ public class RedditQueryService {
 
         // Add to this section
 
+        HttpEntity<String> entity = new HttpEntity<>(headers);
         Map<String, String> uriVariables = Map.of("subreddit", subreddit);
-
-        HttpEntity<String> entity = new HttpEntity<>("body", headers);
 
         ResponseEntity<String> re = restTemplate.exchange(ENDPOINT, HttpMethod.GET, entity, String.class,
                 uriVariables);

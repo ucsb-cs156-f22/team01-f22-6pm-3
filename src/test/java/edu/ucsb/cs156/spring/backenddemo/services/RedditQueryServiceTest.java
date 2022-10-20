@@ -35,17 +35,17 @@ public class RedditQueryServiceTest {
 
     @Test
     public void test_getJSON() {
-        String subreddit = "cscareerquestions";
+        String subreddit = "UCSantaBarbara";
         String expectedURL = RedditQueryService.ENDPOINT.replace("{subreddit}", subreddit);
-        String testJSONresult = "{ \"fake\" : \"result\" }";
+        String fakeJSONresult = "{ \"fake\" : \"result\" }";
 
         this.mockRestServiceServer.expect(requestTo(expectedURL))
                 .andExpect(header("Accept", MediaType.APPLICATION_JSON.toString()))
                 .andExpect(header("Content-Type", MediaType.APPLICATION_JSON.toString()))
-                .andRespond(withSuccess(testJSONresult, MediaType.APPLICATION_JSON));
+                .andRespond(withSuccess(fakeJSONresult, MediaType.APPLICATION_JSON));
         
         String actualResult = RedditQueryService.getJSON(subreddit);
-        assertEquals(testJSONresult, actualResult);
+        assertEquals(fakeJSONresult, actualResult);
 
     }
 
