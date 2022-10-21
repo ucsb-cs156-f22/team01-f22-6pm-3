@@ -38,7 +38,7 @@ public class RedditQueryService {
 
         // Add to this section
 
-        HttpEntity<String> entity = new HttpEntity<>("body", headers);
+        HttpEntity<String> entity = new HttpEntity<>(headers);
         Map<String, String> uriVariables = Map.of("subreddit", subreddit);
 
         ResponseEntity<String> re = restTemplate.exchange(ENDPOINT, HttpMethod.GET, entity, String.class,
